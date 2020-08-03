@@ -1,11 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 const delimiter = " "
 const englishHelloPrefix = "Hello, "
 
-func Hello(first_name string, last_name string, language string) string {
+func Hello(first_name, last_name, language string) string {
 
 	if first_name == "" || last_name == "" {
 		first_name = "World"
@@ -16,11 +19,15 @@ func Hello(first_name string, last_name string, language string) string {
 }
 
 func getGreetingsPrefix(language string) (prefix string) {
+	language = strings.ToLower(language)
+
 	switch language {
 	case "french":
 		prefix = "Bonjour, "
 	case "spanish":
 		prefix = "Hola, "
+	case "hindi":
+		prefix = "Hailo, "
 	default:
 		prefix = "Hello, "
 	}
@@ -29,5 +36,5 @@ func getGreetingsPrefix(language string) (prefix string) {
 }
 
 func main() {
-	fmt.Println(Hello("Ige", "Adetokunbo", "french"))
+	fmt.Println(Hello("Ige", "Adetokunbo", "French"))
 }
